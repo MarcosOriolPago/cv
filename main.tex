@@ -88,9 +88,10 @@
 }
 
 % Modern skill icon with SVG support (SVG files in icons/)
+% Use center baseline and zero inner sep to avoid vertical misalignment across SVGs
 \newcommand{\skillicon}[2]{%
-  \tikz[baseline=(icon.base)]{
-    \node[circle, fill=#1!8, draw=#1!20, minimum size=22pt, inner sep=1pt] (icon) {\includesvg[width=12pt,height=12pt]{#2}};
+  \tikz[baseline=(icon.center)]{
+    \node[circle, fill=#1!8, draw=#1!20, minimum size=22pt, inner sep=0pt] (icon) {\includesvg[width=12pt,height=12pt]{#2}};
   }%
 }
 
@@ -130,8 +131,8 @@
 % -----------------------
 % PERSONAL INFO
 % -----------------------
-\name{Marcos Example}
-\tagline{Software Engineer • Full Stack Developer}
+\name{Marcos Oriol Pagonabarraga}
+\tagline{Neuroengineer - Software Engineer}
 \photoL{3cm}{photo.png} % ← Add your photo.png in same folder or comment this line
 
 \personalinfo{
@@ -163,41 +164,39 @@
 \tikz{\path[fill overzoom image={photo.png}] circle[radius=1.5cm];}
       \end{minipage}\hfill
       \begin{minipage}[c]{0.72\paperwidth}
-        {\color{white}{\Huge\bfseries Marcos Example}}\\[6pt]
-        {\color{white!90}{\Large Software Engineer \& Full Stack Developer}}\\[6pt]
-        {\color{white!85}{marcos@example.com \quad +1\;234\;567\;890 \quad github.com/marcosdev}}
+        {\color{white}{\Huge\bfseries Marcos Oriol Pagonabarraga}}\\[6pt]
+        {\color{white!90}{\Large Neuroengineer \& Software Engineer}}\\[6pt]
+        {\color{white!85}{marcos.oriol.p@gmail.com \quad +34\;626\;027\;986 \quad github.com/MarcosOriolPago}}
       \end{minipage}
     \end{minipage}
   };
 \end{tikzpicture}
 % Reserve space below the overlay header (optimize vertical space)
-\vspace*{3.9cm}
+\vspace*{3cm}
 
 % About section spans full width
-\input{sections/about_ultra_modern}
-
-\vspace{16pt}
+\input{sections/about}
 
 % Two-column layout for the rest
 \columnratio{0.58}
 \begin{paracol}{2}
 
 % LEFT COLUMN -----------------------
-\input{sections/skills_ultra_modern}
+\input{sections/skills}
 
 \vspace{12pt}
 
-\input{sections/education_modern}
+\input{sections/education}
 
 \vspace{12pt}
 
-\input{sections/projects_modern}
+\input{sections/projects}
 
 
 % RIGHT COLUMN -----------------------
 \switchcolumn
 
-\input{sections/experience_ultra_modern}
+\input{sections/experience}
 
 \end{paracol}
 
