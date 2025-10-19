@@ -50,7 +50,7 @@
 % -----------------------
 % MODERN 2024 LAYOUT
 % -----------------------
-\geometry{margin=1cm} % 1cm margins as requested
+\geometry{margin=0.5cm} % 1cm margins as requested
 \usetikzlibrary{positioning,shapes.geometric,arrows.meta,shadows,decorations.pathreplacing}
 \usepackage{tcolorbox}
 \tcbuselibrary{skins}
@@ -144,11 +144,11 @@
 \photoL{3cm}{photo.png} % ← Add your photo.png in same folder or comment this line
 
 \personalinfo{
-  \email{marcos@example.com}
-  \phone{+1 234 567 890}
-  \github{marcosdev}
-  \linkedin{marcos-dev}
-  \homepage{marcos.dev}
+  \email{marcos.oriol.p@gmail.com}
+  \phone{+34 626 027 986}
+  \github{MarcosOriolPago}
+  \linkedin{marcos-oriol-pagonabarraga-a9a590143}
+  \homepage{marcos.oriol-tech-com}
 }
 
 % -----------------------
@@ -161,10 +161,10 @@
 \begin{tikzpicture}[remember picture,overlay]
   % background gradient spanning full paper width
   \fill[left color=DockerBlue!85, right color=DockerPurple!70]
-    (current page.north west) rectangle ([yshift=-4.3cm]current page.north east);
+    (current page.north west) rectangle ([yshift=-5.2cm]current page.north east);
   % content container centered vertically within header height
   \node[anchor=north west, inner sep=0pt] at (current page.north west) {
-    \begin{minipage}[c][4.3cm][c]{\paperwidth}
+    \begin{minipage}[c][5.2cm][c]{\paperwidth}
       \hspace*{1cm}% left padding to align roughly with text area
       \begin{minipage}[c]{0.22\paperwidth}
         \centering
@@ -172,18 +172,21 @@
 \tikz{\path[fill overzoom image={photo.png}] circle[radius=1.5cm];}
       \end{minipage}\hfill
       \begin{minipage}[c]{0.72\paperwidth}
-        {\color{white}{\Huge\bfseries Marcos Oriol Pagonabarraga}}\\[6pt]
+        {\color{white}{\Huge\bfseries Marcos Oriol Pagonabarraga}}\\[4pt]
         {\color{white!90}{\Large Neuroengineer \& Software Engineer}}\\[6pt]
-        {\color{white!85}{marcos.oriol.p@gmail.com \quad +34\;626\;027\;986 \quad github.com/MarcosOriolPago}}
+        {\small\color{white!92}{\faAt\ \href{mailto:marcos.oriol.p@gmail.com}{marcos.oriol.p@gmail.com}\quad
+        \faPhone\ \href{tel:+34626027986}{+34\,626\,027\,986}\quad
+        \faGithub\ \href{https://github.com/MarcosOriolPago}{github.com/MarcosOriolPago}\quad
+        \faGlobe\ \href{https://marcos.oriol-tech.com}{marcos.oriol-tech.com}}}\\[8pt]
+        {\color{white!92}{\small Passionate software engineer focused on AI/ML and modern web technologies. I enjoy building clean architectures and great developer experiences.}}
       \end{minipage}
     \end{minipage}
   };
 \end{tikzpicture}
 % Reserve space below the overlay header (optimize vertical space)
-\vspace*{3cm}
+\vspace*{4.8cm}
 
-% About section spans full width
-\input{sections/about}
+% About content integrated into header
 
 % Two-column layout for the rest
 \columnratio{0.58}
