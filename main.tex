@@ -16,6 +16,7 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{geometry}
+\usepackage{ragged2e, microtype} % ensure this is in the preamble
 
 % -----------------------
 % MODERN DEVELOPER FONTS
@@ -109,6 +110,13 @@
   }%
 }
 
+% Timeline layout paddings and fixed text width
+\newlength{\timelineLeftPad}
+\newlength{\timelineRightPad}
+\newcommand{\timelineTextWidth}{\dimexpr\linewidth-\timelineLeftPad-\timelineRightPad\relax}
+\tikzset{timelineTextNode/.style={text width=\timelineTextWidth, inner sep=0pt, align=justify}}
+
+
 % Horizontal percentage skill bar
 \newcommand{\skillbar}[2]{%
   \noindent\textbf{#1}\hfill{\small #2\%}\par\vspace{2pt}%
@@ -184,7 +192,7 @@
 % LEFT COLUMN -----------------------
 \input{sections/skills}
 
-\vspace{12pt}
+\vspace{2pt}
 
 \input{sections/projects}
 

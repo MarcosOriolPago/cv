@@ -3,56 +3,75 @@
 
 \vspace{8pt}
 
-% Vertical timeline with dots on the left, constrained to column width
 \begin{tikzpicture}[x=1cm,y=1cm]
-  % vertical line within box (extended for added spacing)
+  % vertical line
   \draw[DockerBorder, line width=0.8pt] (0,0) -- (0,-12.2);
 
-  % Entry 1 (top)
+  % wider description width
+  \newcommand{\descwidth}{\dimexpr\linewidth-0.4cm\relax}
+
+  % justified paragraph node without indentation
+  \newcommand{\descnode}[3]{%
+    \node[anchor=west] at (#1,#2) {%
+      \begin{minipage}[t]{\descwidth}%
+        \noindent%
+        \setlength{\parindent}{0pt}%
+        \justifying%
+        \sloppy%
+        \emergencystretch=1em%
+        #3%
+      \end{minipage}%
+    };%
+  }
+
+  %-------------------------------------------------
+  % Entry 1
   \fill[DockerPurple] (0,0) circle (3pt);
-  % Title aligned with dot
-  \node[anchor=west] at (0.45,0) {\textcolor{DockerPurple}{\bfseries AI - ML Engineer}};
-  % Company
-  \node[anchor=west,text=emphasis] at (0.45,-0.50) {IDNEO Technologies Inc.};
-  % Place
-  \node[anchor=west,text=body] at (0.45,-1.00) {\small Barcelona, Spain (2024 -- present)};
-  % Description (wrapped)
-  \node[anchor=west,align=left,text width=\dimexpr\linewidth-1.3cm\relax] at (0.45,-2.30) 
-  {Development of AI Models for embedded systems in the automotive industry, including data collection, model training, and deployment.};
-  % Icons
-  \node[anchor=west] at (0.45,-3.90) {\skillicon{DockerWarning}{python-original}\hspace{3pt}\skillicon{DockerBlue}{docker-original}\hspace{3pt}\skillicon{DockerDanger}{tensorflow-original}\hspace{3pt}\skillicon{DockerPurple}{pytorch-original}};
+  \node[anchor=west] at (0.3,0) {\textcolor{DockerPurple}{\bfseries AI - ML Engineer}};
+  \node[anchor=west,text=emphasis] at (0.3,-0.50) {IDNEO Technologies Inc.};
+  \node[anchor=west,text=body] at (0.3,-1.00) {\small Barcelona, Spain (2024 -- present)};
+  \descnode{0.3}{-2.10}{%
+    Development of AI models for embedded systems in the automotive industry, including data collection, model training, and deployment.
+  }
+  \node[anchor=west] at (0.3,-3.50) {%
+    \skillicon{DockerWarning}{python-original}\hspace{3pt}
+    \skillicon{DockerBlue}{docker-original}\hspace{3pt}
+    \skillicon{DockerDanger}{tensorflow-original}\hspace{3pt}
+    \skillicon{DockerPurple}{pytorch-original}
+  };
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Entry 2 base y
-  \def\ybase{-5}
+  %-------------------------------------------------
+  % Entry 2
+  \def\ybase{-4.5}
   \fill[DockerPurple] (0,\ybase) circle (3pt);
-  % Title
-  \node[anchor=west] at (0.45,\ybase) {\textcolor{DockerPurple}{\bfseries Software Engineer Collaboration}};
-  % Company
-  \node[anchor=west,text=emphasis] at (0.45,\ybase-0.50) {PRBB - Hospital del Mar};
-  % Place
-  \node[anchor=west,text=body] at (0.45,\ybase-1.00) {\small Barcelona, Spain (2024 - 2025)};
-  % Description
-  \node[anchor=west,align=left,text width=\dimexpr\linewidth-1.3cm\relax] at (0.45,\ybase-1.9) 
-  {Use of focused ultrasound (FUS) for spinal cord neuronal stimulation.};
-  % Icons
-  \node[anchor=west] at (0.45,\ybase-3.1) {\skillicon{DockerSuccess}{react-original}\hspace{3pt}\skillicon{DockerWarning}{python-original}\hspace{3pt}\skillicon{DockerPurple}{postgresql-original}};
+  \node[anchor=west] at (0.3,\ybase) {\textcolor{DockerPurple}{\bfseries Software Engineer Collaboration}};
+  \node[anchor=west,text=emphasis] at (0.3,\ybase-0.50) {PRBB - Hospital del Mar};
+  \node[anchor=west,text=body] at (0.3,\ybase-1.00) {\small Barcelona, Spain (2024 - 2025)};
+  \descnode{0.3}{\ybase-1.7}{%
+    Use of focused ultrasound for spinal cord neuronal stimulation.
+  }
+  \node[anchor=west] at (0.3,\ybase-2.7) {%
+    \skillicon{DockerSuccess}{react-original}\hspace{3pt}
+    \skillicon{DockerWarning}{python-original}\hspace{3pt}
+    \skillicon{DockerPurple}{postgresql-original}
+  };
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % Entry 3 base y
-  \def\ybase{-9.1}
+  %-------------------------------------------------
+  % Entry 3
+  \def\ybase{-8.2}
   \fill[DockerPurple] (0,\ybase) circle (3pt);
-  % Title
-  \node[anchor=west] at (0.45,\ybase) {\textcolor{DockerPurple}{\bfseries Neuroengineering Research Intern}};
-  % Company
-  \node[anchor=west,text=emphasis] at (0.45,\ybase-0.50) {i3S};
-  % Place
-  \node[anchor=west,text=body] at (0.45,\ybase-1.00) {\small Porto, Portugal (feb 2024 - jun 2024)};
-  % Description
-  \node[anchor=west,align=left,text width=\dimexpr\linewidth-1.3cm\relax] at (0.45,\ybase-2.50) 
-  {Development of neuron models for detection of memory associated pattern in the hippocampus of mice. The neuron model was then mapped to neuromorphic hardware.};
-  % Icons
-  \node[anchor=west] at (0.45,\ybase-4.3) {\skillicon{DockerSuccess}{react-original}\hspace{3pt}\skillicon{DockerWarning}{python-original}\hspace{3pt}\skillicon{DockerPurple}{postgresql-original}};
+  \node[anchor=west] at (0.3,\ybase) {\textcolor{DockerPurple}{\bfseries Neuroengineering Research Intern}};
+  \node[anchor=west,text=emphasis] at (0.3,\ybase-0.50) {i3S};
+  \node[anchor=west,text=body] at (0.3,\ybase-1.00) {\small Porto, Portugal (Feb 2024 -- Jun 2024)};
+  \descnode{0.3}{\ybase-2.30}{%
+    Development of neuron models for detection of memory-associated patterns in the hippocampus of mice. The neuron model was then mapped to neuromorphic hardware.
+  }
+  \node[anchor=west] at (0.3,\ybase-3.9) {%
+    \skillicon{DockerSuccess}{react-original}\hspace{3pt}
+    \skillicon{DockerWarning}{python-original}\hspace{3pt}
+    \skillicon{DockerPurple}{postgresql-original}
+  };
+
 \end{tikzpicture}
 
 \end{tcolorbox}
