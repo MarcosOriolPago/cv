@@ -1,0 +1,43 @@
+\begin{tcolorbox}[vercelcard, sidebyside, righthand width=0.42\linewidth, sidebyside gap=16pt]
+\textcolor{DockerBlue}{\large\textbf{Capabilities}}\\[6pt]
+
+% LEFT: Technologies (icons)
+\textcolor{emphasis}{\textbf{Technologies}} \\
+\vspace{4pt}
+\textbf{Frontend}\\
+\skillicon{DockerBlue}{react-original} \hspace{4pt}
+\skillicon{DockerSuccess}{typescript-original} \hspace{4pt}
+\skillicon{DockerWarning}{javascript-original}\\[8pt]
+\textbf{Backend}\\
+\skillicon{DockerWarning}{python-original} \hspace{4pt}
+\skillicon{DockerPurple}{postgresql-original}\\[8pt]
+\textbf{AI / ML}\\
+\skillicon{DockerDanger}{tensorflow-original} \hspace{4pt}
+\skillicon{DockerPurple}{pytorch-original}\\[8pt]
+\textbf{DevOps \& Tools}\\
+\skillicon{DockerBlue}{docker-original} \hspace{4pt}
+\skillicon{emphasis}{linux-original} \hspace{4pt}
+\skillicon{DockerGray}{github-original}
+
+\tcblower
+% RIGHT: Skills radar
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+  \foreach \r in {1,2,3,4,5} {\draw[DockerBorder, thin] (0,0) circle (\r*0.5cm);}  
+  % axes (Self-learning, Research, Motivation, Communication, Problem-solving)
+  \draw[DockerGray!40] (0,0) -- (90:2.5cm);
+  \draw[DockerGray!40] (0,0) -- (18:2.5cm);
+  \draw[DockerGray!40] (0,0) -- (-54:2.5cm);
+  \draw[DockerGray!40] (0,0) -- (-126:2.5cm);
+  \draw[DockerGray!40] (0,0) -- (162:2.5cm);
+  % data polygon (example levels)
+  \draw[DockerPurple!70, fill=DockerPurple!12, thick]
+    (90:2.4cm) -- (18:2.2cm) -- (-54:2.5cm) -- (-126:2.0cm) -- (162:2.3cm) -- cycle;
+  \node[font=\scriptsize] at (90:3.0cm) {Self-learning};
+  \node[font=\scriptsize] at (18:3.0cm) {Research};
+  \node[font=\scriptsize] at (-54:3.0cm) {Motivation};
+  \node[font=\scriptsize] at (-126:3.0cm) {Communication};
+  \node[font=\scriptsize] at (162:3.0cm) {Problem-solving};
+\end{tikzpicture}
+\end{center}
+\end{tcolorbox}

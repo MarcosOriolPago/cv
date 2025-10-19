@@ -1,0 +1,43 @@
+\begin{tcolorbox}[vercelcard]
+\textcolor{DockerBlue}{\large\textbf{Career History}}
+
+\vspace{8pt}
+
+% Vertical timeline with dots on the left, constrained to column width
+\begin{tikzpicture}[x=1cm,y=1cm]
+  % vertical line within box (extended for added spacing)
+  \draw[DockerBorder, line width=0.8pt] (0,0) -- (0,-12.2);
+
+  % Entry 1 (top)
+  \fill[DockerPurple] (0,0) circle (3pt);
+  % Title aligned with dot
+  \node[anchor=west] at (0.45,0) {\textcolor{DockerPurple}{\bfseries AI - ML Engineer}};
+  % Company
+  \node[anchor=west,text=emphasis] at (0.45,-0.50) {IDNEO Technologies Inc.};
+  % Place
+  \node[anchor=west,text=body] at (0.45,-1.00) {\small Barcelona, Spain};
+  % Years
+  \node[anchor=west,text=DockerGray] at (0.45,-1.50) {\small 2024 -- present};
+  % Description (wrapped)
+  \node[anchor=west,align=left,text width=\dimexpr\linewidth-1.3cm\relax] at (0.45,-2.30) {Development of AI Models for embedded systems in the automotive industry, including data collection, model training, and deployment.};
+  % Icons
+  \node[anchor=west] at (0.45,-3.10) {\skillicon{DockerWarning}{python-original}\hspace{3pt}\skillicon{DockerBlue}{docker-original}\hspace{3pt}\skillicon{DockerDanger}{tensorflow-original}\hspace{3pt}\skillicon{DockerPurple}{pytorch-original}};
+
+  % Entry 2 base y (extra gap)
+  \def\ybase{-7.6}
+  \fill[DockerBlue] (0,\ybase) circle (3pt);
+  % Title
+  \node[anchor=west] at (0.45,\ybase) {\textcolor{DockerBlue}{\bfseries Software Engineer}};
+  % Company
+  \node[anchor=west,text=emphasis] at (0.45,\ybase-0.50) {PRBB};
+  % Place
+  \node[anchor=west,text=body] at (0.45,\ybase-1.00) {\small Barcelona, Spain};
+  % Years
+  \node[anchor=west,text=DockerGray] at (0.45,\ybase-1.50) {\small 2024 -- 2025};
+  % Description
+  \node[anchor=west,align=left,text width=\dimexpr\linewidth-1.3cm\relax] at (0.45,\ybase-2.30) {Developing and implementing artificial intelligence tools for software designed for ultrasonic-based spinal cord stimulation.};
+  % Icons
+  \node[anchor=west] at (0.45,\ybase-3.10) {\skillicon{DockerSuccess}{react-original}\hspace{3pt}\skillicon{DockerWarning}{python-original}\hspace{3pt}\skillicon{DockerPurple}{postgresql-original}};
+\end{tikzpicture}
+
+\end{tcolorbox}

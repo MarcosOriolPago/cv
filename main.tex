@@ -7,18 +7,125 @@
 \usepackage[T1]{fontenc}
 \usepackage{paracol} % Needed for two-column layout
 \usepackage{graphicx}
+\usepackage{svg}
+\svgpath{{icons/}}
 \usepackage{fontawesome5}
 \usepackage{hyperref}
 \usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{geometry}
 
 % -----------------------
-% COLORS AND STYLES
+% MODERN DEVELOPER FONTS
 % -----------------------
-\definecolor{AccentColor}{HTML}{007ACC}
-\colorlet{heading}{AccentColor}
-\colorlet{accent}{AccentColor}
-\colorlet{emphasis}{black}
-\colorlet{body}{gray!10!black}
+% Use monospace font for developer aesthetic
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\ttdefault} % Use typewriter font
+\usepackage[scaled=0.85]{beramono} % Modern monospace font
+
+% -----------------------
+% DOCKER-INSPIRED COLOR PALETTE
+% -----------------------
+\definecolor{DockerBlue}{HTML}{2496ED}      % Docker Primary Blue
+\definecolor{DockerDark}{HTML}{24292F}      % GitHub Dark
+\definecolor{DockerLight}{HTML}{F6F8FA}     % GitHub Light Background
+\definecolor{DockerGray}{HTML}{6A737D}      % GitHub Gray Text
+\definecolor{DockerSuccess}{HTML}{28A745}   % Success Green
+\definecolor{DockerWarning}{HTML}{FFC107}   % Warning Yellow
+\definecolor{DockerDanger}{HTML}{DC3545}    % Error Red
+\definecolor{DockerPurple}{HTML}{6F42C1}    % Purple accent
+\definecolor{DockerBorder}{HTML}{E1E4E8}    % Light border
+
+% Modern color assignments
+\colorlet{heading}{DockerBlue}
+\colorlet{accent}{DockerBlue}
+\colorlet{emphasis}{DockerDark}
+\colorlet{body}{DockerGray}
+\colorlet{lightbg}{DockerLight}
+\colorlet{border}{DockerBorder}
+
+% -----------------------
+% MODERN 2024 LAYOUT
+% -----------------------
+\geometry{margin=1cm} % 1cm margins as requested
+\usetikzlibrary{positioning,shapes.geometric,arrows.meta,shadows,decorations.pathreplacing}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{tikz}
+
+% Card with tiny light border, rounded corners
+\tcbset{
+  vercelcard/.style={
+    enhanced,
+    boxrule=0.4pt,
+    colback=white,
+    colframe=DockerBorder,
+    arc=6pt,
+    outer arc=6pt,
+    top=14pt,
+    bottom=14pt,
+    left=18pt,
+    right=18pt,
+    boxsep=0pt
+  }
+}
+
+% Timeline card with light border
+\tcbset{
+  timelinecard/.style={
+    enhanced,
+    boxrule=0.5pt,
+    colback=white,
+    colframe=DockerBorder,
+    arc=6pt,
+    top=12pt,
+    bottom=12pt,
+    left=16pt,
+    right=16pt
+  }
+}
+
+% Modern skill icon with SVG support (SVG files in icons/)
+\newcommand{\skillicon}[2]{%
+  \tikz[baseline=(icon.base)]{
+    \node[circle, fill=#1!8, draw=#1!20, minimum size=22pt, inner sep=1pt] (icon) {\includesvg[width=12pt,height=12pt]{#2}};
+  }%
+}
+
+% Fallback text icon for missing SVGs
+\newcommand{\textskillicon}[2]{%
+  \tikz[baseline=(icon.base)]{
+    \node[circle, fill=#1!8, draw=#1!20, minimum size=22pt, font=\tiny\ttfamily] (icon) {#2};
+  }%
+}
+
+% Timeline node command
+\newcommand{\timelinenode}[1]{%
+  \tikz[baseline=(node.base)]{
+    \node[circle, fill=#1, minimum size=12pt, inner sep=0pt] (node) {};
+  }%
+}
+
+% Horizontal percentage skill bar
+\newcommand{\skillbar}[2]{%
+  \noindent\textbf{#1}\hfill{\small #2\%}\par\vspace{2pt}%
+  \begin{tikzpicture}[x=\linewidth,y=1cm]
+    \fill[DockerBorder] (0,0) rectangle (1,0.12);
+    \pgfmathsetmacro{\p}{#2/100}
+    \fill[DockerBlue] (0,0) rectangle (\p,0.12);
+  \end{tikzpicture}\vspace{4pt}
+}
+
+% Project item macro (uniform format)
+\newcommand{\projectitem}[6]{%
+  \textbf{#1}\\
+  \textcolor{body}{#2}\\[4pt]
+  \cvtag{\faGithub\ #3}\\[2pt]
+  \textcolor{DockerGray}{\small #4}\\
+  \textcolor{DockerGray}{\small #5\ on\ \faCodeBranch\ #6}
+}
 
 % -----------------------
 % PERSONAL INFO
@@ -40,55 +147,57 @@
 % -----------------------
 \begin{document}
 
-\makecvheader
+% Full-width gradient header, margin-top 0 (overlay), vertically centered content
+\noindent
+\begin{tikzpicture}[remember picture,overlay]
+  % background gradient spanning full paper width
+  \fill[left color=DockerBlue!85, right color=DockerPurple!70]
+    (current page.north west) rectangle ([yshift=-4.3cm]current page.north east);
+  % content container centered vertically within header height
+  \node[anchor=north west, inner sep=0pt] at (current page.north west) {
+    \begin{minipage}[c][4.3cm][c]{\paperwidth}
+      \hspace*{1cm}% left padding to align roughly with text area
+      \begin{minipage}[c]{0.22\paperwidth}
+        \centering
+% Circular photo using overzoom to center image within circle
+\tikz{\path[fill overzoom image={photo.png}] circle[radius=1.5cm];}
+      \end{minipage}\hfill
+      \begin{minipage}[c]{0.72\paperwidth}
+        {\color{white}{\Huge\bfseries Marcos Example}}\\[6pt]
+        {\color{white!90}{\Large Software Engineer \& Full Stack Developer}}\\[6pt]
+        {\color{white!85}{marcos@example.com \quad +1\;234\;567\;890 \quad github.com/marcosdev}}
+      \end{minipage}
+    \end{minipage}
+  };
+\end{tikzpicture}
+% Reserve space below the overlay header (optimize vertical space)
+\vspace*{3.9cm}
 
-\columnratio{0.68}
+% About section spans full width
+\input{sections/about_ultra_modern}
+
+\vspace{16pt}
+
+% Two-column layout for the rest
+\columnratio{0.58}
 \begin{paracol}{2}
 
 % LEFT COLUMN -----------------------
-\cvsection{Skills}
+\input{sections/skills_ultra_modern}
 
-\begin{itemize}
-  \item \textbf{Programming:} Python, TypeScript, React, Node.js
-  \item \textbf{Data Visualization:} D3.js, Plotly, LaTeX pgfplots
-  \item \textbf{Languages:} English (C1), Spanish (Native)
-\end{itemize}
+\vspace{12pt}
 
-\cvsection{Education}
-\cvevent{B.Sc. in Computer Science}{University of Example}{2018 -- 2022}{}
-\divider
+\input{sections/education_modern}
 
-\cvsection{Projects}
-\cvevent{DataVizPro}{Interactive data visualization tool built with React, D3.js, and Flask.}{2023}{\href{https://datavizpro.example.com}{datavizpro.example.com}}
+\vspace{12pt}
+
+\input{sections/projects_modern}
+
 
 % RIGHT COLUMN -----------------------
 \switchcolumn
 
-\cvsection{Experience Timeline}
-\begin{itemize}
-  \item \textbf{2024 -- Present:} Senior Software Engineer at TechCorp
-  \item \textbf{2022 -- 2024:} Full Stack Developer at Webify
-  \item \textbf{2021:} Software Intern at DataFlow
-\end{itemize}
-
-\cvsection{Visual Skills}
-
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-  width=0.8\linewidth,
-  height=0.6\linewidth,
-  axis lines=none,
-  ticks=none,
-  y=1cm,
-  x=1cm,
-  grid=major,
-]
-\addplot+[mark=none,fill=AccentColor!40,opacity=0.6] coordinates
-  {(0,4) (1,3) (2,4) (3,2) (4,3) (0,4)};
-\end{axis}
-\end{tikzpicture}
-\end{center}
+\input{sections/experience_ultra_modern}
 
 \end{paracol}
 
