@@ -129,12 +129,15 @@
 }
 
 % Project item macro (uniform format)
-\newcommand{\projectitem}[6]{%
+\newcommand{\projectitem}[3]{%
   \textbf{#1}\\
   \textcolor{body}{#2}\\[4pt]
-  \cvtag{\faGithub\ #3}\\[2pt]
-  \textcolor{DockerGray}{\small #4}\\
-  \textcolor{DockerGray}{\small #5\ on\ \faCodeBranch\ #6}
+  % Only show GitHub tag if #3 is not empty
+  \if\relax\detokenize{#3}\relax
+    % do nothing
+  \else
+    \cvtag{\faGithub\ \href{https://github.com/#3}{#3}}\\
+  \fi
 }
 
 % -----------------------
