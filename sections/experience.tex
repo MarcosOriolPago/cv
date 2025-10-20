@@ -5,10 +5,10 @@
 
 \begin{tikzpicture}[x=1cm,y=1cm]
   % vertical line
-  \draw[DockerBorder, line width=0.8pt] (0,0) -- (0,-12.2);
+  \draw[DockerBorder, line width=0.8pt] (0,0) -- (0,-11);
 
   % wider description width
-  \newcommand{\descwidth}{\dimexpr\linewidth-0.4cm\relax}
+  \newcommand{\descwidth}{10cm} 
 
   % justified paragraph node without indentation
   \newcommand{\descnode}[3]{%
@@ -30,10 +30,10 @@
   \node[anchor=west] at (0.3,0) {\textcolor{DockerPurple}{\bfseries AI - ML Engineer}};
   \node[anchor=west,text=emphasis] at (0.3,-0.50) {IDNEO Technologies Inc.};
   \node[anchor=west,text=body] at (0.3,-1.00) {\small Barcelona, Spain (2024 -- present)};
-  \descnode{0.3}{-2.10}{%
+  \descnode{0.3}{-1.9}{%
     Development of AI models for embedded systems in the automotive industry, including data collection, model training, and deployment.
   }
-  \node[anchor=west] at (0.3,-3.50) {%
+  \node[anchor=west] at (0.3,-3.1) {%
     \skillicon{DockerWarning}{python-original}\hspace{3pt}
     \skillicon{DockerBlue}{docker-original}\hspace{3pt}
     \skillicon{DockerDanger}{tensorflow-original}\hspace{3pt}
@@ -42,7 +42,7 @@
 
   %-------------------------------------------------
   % Entry 2
-  \def\ybase{-4.5}
+  \def\ybase{-4.1}
   \fill[DockerPurple] (0,\ybase) circle (3pt);
   \node[anchor=west] at (0.3,\ybase) {\textcolor{DockerPurple}{\bfseries Software Engineer Collaboration}};
   \node[anchor=west,text=emphasis] at (0.3,\ybase-0.50) {PRBB - Hospital del Mar};
@@ -58,15 +58,15 @@
 
   %-------------------------------------------------
   % Entry 3
-  \def\ybase{-8.2}
+  \def\ybase{-7.8}
   \fill[DockerPurple] (0,\ybase) circle (3pt);
   \node[anchor=west] at (0.3,\ybase) {\textcolor{DockerPurple}{\bfseries Neuroengineering Research Intern}};
   \node[anchor=west,text=emphasis] at (0.3,\ybase-0.50) {i3S};
   \node[anchor=west,text=body] at (0.3,\ybase-1.00) {\small Porto, Portugal (Feb 2024 -- Jun 2024)};
-  \descnode{0.3}{\ybase-2.30}{%
-    Development of neuron models for detection of memory-associated patterns in the hippocampus of mice. The neuron model was then mapped to neuromorphic hardware.
+  \descnode{0.3}{\ybase-2}{%
+    Development of neuron models for detection of patterns associated with memory in the hippocampus of mice. The neuron model was then mapped to neuromorphic hardware.
   }
-  \node[anchor=west] at (0.3,\ybase-3.9) {%
+  \node[anchor=west] at (0.3,\ybase-3.2) {%
     \skillicon{DockerSuccess}{react-original}\hspace{3pt}
     \skillicon{DockerWarning}{python-original}\hspace{3pt}
     \skillicon{DockerPurple}{postgresql-original}

@@ -17,6 +17,7 @@
 \usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{ragged2e, microtype} % ensure this is in the preamble
+\usetikzlibrary{shapes, shadows}
 
 % -----------------------
 % MODERN DEVELOPER FONTS
@@ -155,36 +156,10 @@
 % DOCUMENT BODY
 % -----------------------
 \begin{document}
+\input{sections/header}
 
-% Full-width gradient header, margin-top 0 (overlay), vertically centered content
-\noindent
-\begin{tikzpicture}[remember picture,overlay]
-  % background gradient spanning full paper width
-  \fill[left color=DockerBlue!85, right color=DockerPurple!70]
-    (current page.north west) rectangle ([yshift=-5.2cm]current page.north east);
-  % content container centered vertically within header height
-  \node[anchor=north west, inner sep=0pt] at (current page.north west) {
-    \begin{minipage}[c][5.2cm][c]{\paperwidth}
-      \hspace*{1cm}% left padding to align roughly with text area
-      \begin{minipage}[c]{0.22\paperwidth}
-        \centering
-% Circular photo using overzoom to center image within circle
-\tikz{\path[fill overzoom image={photo.png}] circle[radius=1.5cm];}
-      \end{minipage}\hfill
-      \begin{minipage}[c]{0.72\paperwidth}
-        {\color{white}{\Huge\bfseries Marcos Oriol Pagonabarraga}}\\[4pt]
-        {\color{white!90}{\Large Neuroengineer \& Software Engineer}}\\[6pt]
-        {\small\color{white!92}{\faAt\ \href{mailto:marcos.oriol.p@gmail.com}{marcos.oriol.p@gmail.com}\quad
-        \faPhone\ \href{tel:+34626027986}{+34\,626\,027\,986}\quad
-        \faGithub\ \href{https://github.com/MarcosOriolPago}{github.com/MarcosOriolPago}\quad
-        \faGlobe\ \href{https://marcos.oriol-tech.com}{marcos.oriol-tech.com}}}\\[8pt]
-        {\color{white!92}{\small Passionate software engineer focused on AI/ML and modern web technologies. I enjoy building clean architectures and great developer experiences.}}
-      \end{minipage}
-    \end{minipage}
-  };
-\end{tikzpicture}
 % Reserve space below the overlay header (optimize vertical space)
-\vspace*{4.8cm}
+\vspace*{5.4cm}
 
 % About content integrated into header
 
@@ -193,17 +168,17 @@
 \begin{paracol}{2}
 
 % LEFT COLUMN -----------------------
-\input{sections/skills}
+\input{sections/experience}
 
 \vspace{2pt}
 
-\input{sections/projects}
+\input{sections/skills}
 
 
 % RIGHT COLUMN -----------------------
 \switchcolumn
 
-\input{sections/experience}
+\input{sections/projects}
 
 \vspace{2pt}
 
