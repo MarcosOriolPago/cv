@@ -8,10 +8,7 @@ A LaTeX template for creating professional, clean, and modern CVs. The template 
 
 Below is an example of the generated CV PDF:
 
-![CV Preview](cv.pdf)  
-
-> *Note: Make sure you compile `cv.tex` to generate `cv.pdf` before using this preview.*
-
+![CV Preview](preview.png)  
 ---
 
 ## Features
@@ -54,11 +51,11 @@ pdflatex cv.tex
 
 
 ## Directory Structure
-latex-cv/
-├── icons
-├── sections
-├── svg-inkscape
-├── cv.tex
-├── profile.jpg
-├── cv.pdf
+latex-cv/<br>
+├── icons <br>
+├── sections<br>
+├── svg-inkscape<br>
+├── cv.tex<br>
+├── profile.jpg<br>
+├── cv.pdf<br>
 └── README.md 
